@@ -14,7 +14,12 @@ public class OrderApp {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+
         khfksdk
+
+        
+        System.out.println("Yahallo Sekai");
+
     }
     
 }
