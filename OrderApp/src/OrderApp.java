@@ -7,14 +7,27 @@
  *
  * @author zero
  */
+
+import orderApp.components.login.LoginPage;
 public class OrderApp {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static LoginPage loginPage;
+    
+    
+    
+    
+    
+    
+    public static void main(String[] args) {   
+        loginForm(); 
 
     }
     
+    
+    public static void loginForm(){
+        if(loginPage == null){
+            loginPage = new LoginPage();
+            loginPage.setVisible(true); 
+        } 
+    }
 }
