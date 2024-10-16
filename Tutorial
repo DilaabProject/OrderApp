@@ -1,3 +1,29 @@
-Tutorial for connecting netbeans and github
+Tutorial: 
 
-step 1 
+Connecting netbeans and github
+
+step 1: prepare the netbeans
+  a). download netbeans
+  b). download jdk 23
+
+step 2: create a new PAT
+  a). go to your github settings
+  b). click developers settings
+  c). click personal access tokens
+  d). click Tokens(Classic)
+  e). click generate new token(Classic)
+  f). in the SELECT SCOPE, click write:packages
+  g). generate token
+  h). copy the generated token (this token will be used as a password in the netbeans)
+
+step 3: connecting netbeans and git
+  a). open netbeans
+  b). click the team tab in the menu(upper pane)
+  c). click git
+  d). click clone
+  e). in the repository url input this address: https://github.com/DilaabProject/OrderApp.git
+  f). put your username
+  g). in the password field, put the generated token here and check the save password then click next
+  h). check your username and main then cleck next
+  i). make sure your username is indicated in the checkout branch then click finish
+
