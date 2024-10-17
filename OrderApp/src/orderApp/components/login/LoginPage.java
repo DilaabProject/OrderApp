@@ -5,7 +5,7 @@
 package orderApp.components.login;
 import java.util.regex.*;
 import javax.swing.*;
-
+import orderApp.Main;
 /**
  *
  * @author JOHN-RONAN S. BEIRA
@@ -84,6 +84,13 @@ public class LoginPage extends javax.swing.JFrame {
         if (!validEmailVerification(inputtedUsername)){
             JOptionPane.showMessageDialog(this, "You have inputted an invalid Email Address. Try again.", "Invalid Email", JOptionPane.ERROR_MESSAGE);
         }
+        
+        if (emailExist(inputtedUsername) || usernameExist(inputtedUsername)){
+            
+            
+            
+            
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
     
     private boolean validEmailVerification(String inputEmail){
@@ -95,6 +102,27 @@ public class LoginPage extends javax.swing.JFrame {
         return pat.matcher(inputEmail).matches();
     }
     
+    private boolean usernameExist(String inputUsername){
+        
+        
+        for(int i = 0; i < Main.MAX_ACCOUNTS; i++){
+            
+            if(Main.account[i].getUsername().isEmpty()){
+                break;
+            }
+            if(inputUsername.equals(Main.account[i].getUsername())){
+                return true;
+            }
+         }
+        
+        return false;
+    }
+    
+    private boolean emailExist(String email){
+        
+        return false;
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

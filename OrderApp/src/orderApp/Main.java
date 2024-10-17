@@ -8,7 +8,7 @@ public class Main {
 
     //constants
     public static final int MAX_ACCOUNTS = 10000; 
-    public static final int ACCOUNT_COUNT_FORMAT = 3; // username/password/role
+    public static final int ACCOUNT_COUNT_FORMAT = 4; // username/email/password/role
     
     
     

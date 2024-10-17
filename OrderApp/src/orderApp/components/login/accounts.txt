@@ -1,1 +1,1 @@
-admin/admin/admin
+username/email@gmail.com/password/admin

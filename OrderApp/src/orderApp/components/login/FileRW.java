@@ -16,7 +16,7 @@ public class FileRW {
             
             while(scan.hasNextLine()){
                 
-                String accounts[] = new String[3];
+                String accounts[] = new String[4];
                 String temp;
                 
                 
@@ -28,8 +28,10 @@ public class FileRW {
                 accounts = temp.split("/");
                 
                 Main.account[count].setUsername(accounts[0]);
-                Main.account[count].setPassword(accounts[1]);
-                Main.account[count].setRole(accounts[2]);
+                Main.account[count].setEmail(accounts[1]);
+                Main.account[count].setPassword(accounts[2]);
+                Main.account[count].setRole(accounts[3]);
+                
                 count++;
                
             }
