@@ -163,18 +163,40 @@ public class LoginPage extends javax.swing.JFrame {
         
         boolean isUsernameUnique = false;
         boolean isEmailUnique = false;
+        boolean isEmailValid = false;
         String username = usernameSignUpText.getText();
         String email = emailSignUpText.getText();
         String password;
         
         
-        char passwordArray[] = passwordText.getPassword();
+        char passwordArray[] = passwordSignUpText.getPassword();
         password = new String(passwordArray);  
         
-        isUsernameUnique = usernameExist(String username);
-        isEmailUnique = validEmailVerification(String email);
-      
-        if (isUsernameUnique && isEmailUnique){
+        isUsernameUnique = usernameExist(username);
+        isEmailValid = validEmailVerification(email);
+        
+        //check if the fields is not empty
+        
+        if(!isUsernameUnique && !isEmailUnique && !isEmailValid){
+            
+            System.out.print("Email and Username is Invalid \n");
+        }
+        
+        if(!isEmailValid){
+            System.out.print("Email is not valid \n");
+        }
+        if(isUsernameUnique && !isEmailUnique && !isEmailValid){
+            
+            System.out.print("Username is Taken \n");
+        }
+        
+        if(isUsernameUnique && !isEmailUnique && isEmailValid){
+            
+            System.out.print("Email is already in use \n");
+        }
+       
+        
+        if (isUsernameUnique && isEmailUnique && isEmailValid){
             
             //register to the accounts array
             
