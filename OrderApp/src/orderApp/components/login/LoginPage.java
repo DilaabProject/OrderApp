@@ -5,7 +5,7 @@
 package orderApp.components.login;
 import java.util.regex.*;
 import javax.swing.*;
-
+import orderApp.Main;
 /**
  *
  * @author JOHN-RONAN S. BEIRA
@@ -73,16 +73,41 @@ public class LoginPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
+        
         JLabel outputMessageTags;
         String inputtedUsername = usernameText.getText().trim();
+        String inputtedPassword;
+       
+
+        boolean usernameIsNotEmpty = false;
+        boolean usernameIsEmail = validEmailVerification(inputtedUsername);
+        boolean usernameExist = false;
+        
+       
+        //get the password
+        char passwordArray[] = passwordText.getPassword();
+        inputtedPassword = new String(passwordArray);   
+        
+        //validate username inpute: username or email
         if (usernameText.getText().equals("")){
             outputMessageTags = new JLabel("Username cannot be blank.", SwingConstants.CENTER);
             JOptionPane.showMessageDialog(this, outputMessageTags, "Blank Username", JOptionPane.ERROR_MESSAGE);
             return;
+        } else {
+            usernameIsNotEmpty = true;
+            usernameExist = usernamePassExist(inputtedUsername, inputtedPassword);
+           
         }
-        if (!validEmailVerification(inputtedUsername)){
+        
+        if(usernameIsNotEmpty && !usernameIsEmail && usernameExist){
+            System.out.print("successfully login using username");
+            return;
+        } else {
+            if(!usernameIsEmail){
             JOptionPane.showMessageDialog(this, "You have inputted an invalid Email Address. Try again.", "Invalid Email", JOptionPane.ERROR_MESSAGE);
+            } else if (emailPassExist(inputtedUsername, inputtedPassword)){
+                System.out.print("successfully login using email");
+            }
         }
     }//GEN-LAST:event_loginButtonActionPerformed
     
@@ -95,6 +120,39 @@ public class LoginPage extends javax.swing.JFrame {
         return pat.matcher(inputEmail).matches();
     }
     
+    private boolean usernamePassExist(String inputUsername, String inputPassword){
+        
+        
+        for(int i = 0; i < Main.MAX_ACCOUNTS; i++){
+            
+            if(Main.account[i].getUsername() == null){
+                break;
+            }
+            if(inputUsername.equals(Main.account[i].getUsername()) && inputPassword.equals(Main.account[i].getPassword())){
+                return true;
+            }
+         }
+        
+        return false;
+    }
+    
+    private boolean emailPassExist(String inputEmail, String inputPassword){
+        
+        
+        for(int i = 0; i < Main.MAX_ACCOUNTS; i++){
+            
+        
+            if(Main.account[i].getEmail() == null){
+                break;
+            }
+            if(inputEmail.equals(Main.account[i].getEmail()) && inputPassword.equals(Main.account[i].getPassword())){
+                return true;
+            }
+         }
+        
+        return false;
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
