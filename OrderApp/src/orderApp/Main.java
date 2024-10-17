@@ -11,6 +11,7 @@ public class Main {
     public static final int MAX_ACCOUNTS = 10000; 
     public static final int ACCOUNT_COUNT_FORMAT = 4; // username/email/password/role
     
+    public static final String END_LINE = "[END]";
     
     
     
@@ -34,6 +35,7 @@ public class Main {
             account[i] = new Account();
         }
         
+        //load datas
         FileRW.fileRead();
         
         

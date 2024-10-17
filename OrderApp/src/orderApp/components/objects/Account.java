@@ -11,13 +11,18 @@ package orderApp.components.objects;
 public class Account extends Person{
     
     protected String username;
+    protected String email;
     protected String password;
     protected String role;
     
     public Account(){}
     
-    public void setUsername(String email){
-        this.username = super.email;
+    public void setUsername(String username){
+        this.username = username;
+    }
+    
+    public void setEmail(String email){
+        this.email = email;
     }
     
     public void setPassword(String password){
@@ -30,6 +35,10 @@ public class Account extends Person{
     
     public String getUsername(){
         return username;
+    }
+    
+    public String getEmail(){
+        return email;
     }
     
     public String getPassword(){

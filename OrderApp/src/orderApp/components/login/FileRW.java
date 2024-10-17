@@ -20,20 +20,31 @@ public class FileRW {
                 String temp;
                 
                 
-                if(scan.nextLine().isEmpty()){
+                temp = scan.nextLine();
+                
+                
+                //System.out.print(temp);
+                //System.out.print(count);
+                //count++;
+                
+                if(temp.equals(Main.END_LINE)){
+                    System.out.print("break");
                     break;
+                    
                 }
                 
-                temp = scan.nextLine();
                 accounts = temp.split("/");
                 
+                System.out.print(temp);
                 Main.account[count].setUsername(accounts[0]);
                 Main.account[count].setEmail(accounts[1]);
                 Main.account[count].setPassword(accounts[2]);
                 Main.account[count].setRole(accounts[3]);
                 
                 count++;
-               System.out.print(Main.account[count].getEmail());
+                
+                System.out.print(Main.account[count].getEmail());
+                
             }
             
             scan.close();

@@ -12,7 +12,6 @@ public class Person {
     
     protected String firstname;
     protected String lastname;
-    protected String email;
     protected int contactNum;
     
     
@@ -26,10 +25,6 @@ public class Person {
         this.lastname = lastname;
     }
     
-    public void setEmail(String email){
-        this.email = email;
-    }
-    
     public void setContactNum(String constactNum){
         this.contactNum = contactNum;
     }
@@ -40,10 +35,6 @@ public class Person {
     
     public String getLastname(){
         return lastname;
-    }
-    
-    public String getEmail(){
-        return email;
     }
     
     public int getContactNum(){
