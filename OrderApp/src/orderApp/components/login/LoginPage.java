@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package orderApp.components.login;
+import java.util.regex.*;
+import javax.swing.*;
 
 /**
  *
@@ -54,6 +56,11 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, 30));
 
         loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 80, -1));
 
         signUpButton.setText("Sign Up");
@@ -65,8 +72,28 @@ public class LoginPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        JLabel outputMessageTags;
+        String inputtedUsername = usernameText.getText().trim();
+        if (usernameText.getText().equals("")){
+            outputMessageTags = new JLabel("Username cannot be blank.", SwingConstants.CENTER);
+            JOptionPane.showMessageDialog(this, outputMessageTags, "Blank Username", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!validEmailVerification(inputtedUsername)){
+            JOptionPane.showMessageDialog(this, "You have inputted an invalid Email Address. Try again.", "Invalid Email", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
     
-    
+    private boolean validEmailVerification(String inputEmail){
+        String inputEmailRegEx = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pat = Pattern.compile(inputEmailRegEx);
+        if(inputEmail == null){
+            return false;
+        }
+        return pat.matcher(inputEmail).matches();
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
