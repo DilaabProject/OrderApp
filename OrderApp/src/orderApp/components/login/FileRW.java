@@ -23,7 +23,7 @@ public class FileRW {
                 temp = scan.nextLine();
                 
                 if(temp.equals(Main.END_LINE)){
-                    System.out.print("break");
+                    System.out.println(" break.");
                     break;
                     
                 }

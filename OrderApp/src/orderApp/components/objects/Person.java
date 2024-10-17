@@ -25,7 +25,7 @@ public class Person {
         this.lastname = lastname;
     }
     
-    public void setContactNum(String constactNum){
+    public void setContactNum(int contactNum){
         this.contactNum = contactNum;
     }
     
