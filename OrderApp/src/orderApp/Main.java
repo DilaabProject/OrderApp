@@ -3,6 +3,7 @@ package orderApp;
 
 
 import orderApp.components.login.LoginPage;
+import orderApp.components.login.FileRW;
 import orderApp.components.objects.Account;
 public class Main {
 
@@ -33,6 +34,7 @@ public class Main {
             account[i] = new Account();
         }
         
+        FileRW.fileRead();
         
         
         loginForm(); 
