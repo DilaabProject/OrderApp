@@ -22,11 +22,6 @@ public class FileRW {
                 
                 temp = scan.nextLine();
                 
-                
-                //System.out.print(temp);
-                //System.out.print(count);
-                //count++;
-                
                 if(temp.equals(Main.END_LINE)){
                     System.out.print("break");
                     break;
@@ -40,11 +35,8 @@ public class FileRW {
                 Main.account[count].setEmail(accounts[1]);
                 Main.account[count].setPassword(accounts[2]);
                 Main.account[count].setRole(accounts[3]);
-                
+           
                 count++;
-                
-                System.out.print(Main.account[count].getEmail());
-                
             }
             
             scan.close();

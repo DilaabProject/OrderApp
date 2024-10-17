@@ -73,24 +73,41 @@ public class LoginPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
+        
         JLabel outputMessageTags;
         String inputtedUsername = usernameText.getText().trim();
+        String inputtedPassword;
+       
+
+        boolean usernameIsNotEmpty = false;
+        boolean usernameIsEmail = validEmailVerification(inputtedUsername);
+        boolean usernameExist = false;
+        
+       
+        //get the password
+        char passwordArray[] = passwordText.getPassword();
+        inputtedPassword = new String(passwordArray);   
+        
+        //validate username inpute: username or email
         if (usernameText.getText().equals("")){
             outputMessageTags = new JLabel("Username cannot be blank.", SwingConstants.CENTER);
             JOptionPane.showMessageDialog(this, outputMessageTags, "Blank Username", JOptionPane.ERROR_MESSAGE);
             return;
+        } else {
+            usernameIsNotEmpty = true;
+            usernameExist = usernamePassExist(inputtedUsername, inputtedPassword);
+           
         }
         
-        if (!validEmailVerification(inputtedUsername)){
-            JOptionPane.showMessageDialog(this, "You have inputted an invalid Email Address. Try again.", "Invalid Email", JOptionPane.ERROR_MESSAGE);
-        } else if (emailExist(inputtedUsername)){
-            System.out.print("successfully login using email");
+        if(usernameIsNotEmpty && !usernameIsEmail && usernameExist){
+            System.out.print("successfully login using username");
             return;
-        } 
-        
-        if (usernameExist(inputtedUsername)){
-            System.out.print("succesfully login using username");
+        } else {
+            if(!usernameIsEmail){
+            JOptionPane.showMessageDialog(this, "You have inputted an invalid Email Address. Try again.", "Invalid Email", JOptionPane.ERROR_MESSAGE);
+            } else if (emailPassExist(inputtedUsername, inputtedPassword)){
+                System.out.print("successfully login using email");
+            }
         }
     }//GEN-LAST:event_loginButtonActionPerformed
     
@@ -103,15 +120,15 @@ public class LoginPage extends javax.swing.JFrame {
         return pat.matcher(inputEmail).matches();
     }
     
-    private boolean usernameExist(String inputUsername){
+    private boolean usernamePassExist(String inputUsername, String inputPassword){
         
         
         for(int i = 0; i < Main.MAX_ACCOUNTS; i++){
             
-            if(Main.account[i].getUsername().isEmpty()){
+            if(Main.account[i].getUsername() == null){
                 break;
             }
-            if(inputUsername.equals(Main.account[i].getUsername())){
+            if(inputUsername.equals(Main.account[i].getUsername()) && inputPassword.equals(Main.account[i].getPassword())){
                 return true;
             }
          }
@@ -119,15 +136,16 @@ public class LoginPage extends javax.swing.JFrame {
         return false;
     }
     
-    private boolean emailExist(String inputEmail){
+    private boolean emailPassExist(String inputEmail, String inputPassword){
         
         
         for(int i = 0; i < Main.MAX_ACCOUNTS; i++){
             
-            if(Main.account[i].getUsername().isEmpty()){
+        
+            if(Main.account[i].getEmail() == null){
                 break;
             }
-            if(inputEmail.equals(Main.account[i].getEmail())){
+            if(inputEmail.equals(Main.account[i].getEmail()) && inputPassword.equals(Main.account[i].getPassword())){
                 return true;
             }
          }
