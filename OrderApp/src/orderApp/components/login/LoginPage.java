@@ -5,6 +5,8 @@
 package orderApp.components.login;
 import java.util.regex.*;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 import orderApp.Main;
 /**
  *
@@ -72,16 +74,26 @@ public class LoginPage extends javax.swing.JFrame {
         signUpForm.getContentPane().add(signUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 90, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(330, 220));
         setMinimumSize(new java.awt.Dimension(330, 220));
-        setPreferredSize(new java.awt.Dimension(330, 220));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setMaximumSize(new java.awt.Dimension(330, 190));
         jPanel1.setMinimumSize(new java.awt.Dimension(330, 190));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        passwordText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordTextActionPerformed(evt);
+            }
+        });
         jPanel1.add(passwordText, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 100, 30));
+
+        usernameText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameTextActionPerformed(evt);
+            }
+        });
         jPanel1.add(usernameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 100, 30));
 
         jLabel2.setText("Password");
@@ -155,6 +167,7 @@ public class LoginPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
+
     private void signUpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpButtonMouseClicked
         signUpForm.setVisible(true);
     }//GEN-LAST:event_signUpButtonMouseClicked
@@ -208,6 +221,17 @@ public class LoginPage extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_signUpMouseClicked
+
+    private void usernameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
+        // TODO add your handling code here:
+        passwordText.requestFocus();
+    }//GEN-LAST:event_usernameTextActionPerformed
+
+    private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextActionPerformed
+        // TODO add your handling code here:
+        loginButton.doClick();
+    }//GEN-LAST:event_passwordTextActionPerformed
+
     
     private boolean validEmailVerification(String inputEmail){
         String inputEmailRegEx = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
