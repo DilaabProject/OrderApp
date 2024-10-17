@@ -81,15 +81,16 @@ public class LoginPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, outputMessageTags, "Blank Username", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
         if (!validEmailVerification(inputtedUsername)){
             JOptionPane.showMessageDialog(this, "You have inputted an invalid Email Address. Try again.", "Invalid Email", JOptionPane.ERROR_MESSAGE);
-        }
+        } else if (emailExist(inputtedUsername)){
+            System.out.print("successfully login using email");
+            return;
+        } 
         
-        if (emailExist(inputtedUsername) || usernameExist(inputtedUsername)){
-            
-            
-            
-            
+        if (usernameExist(inputtedUsername)){
+            System.out.print("succesfully login using username");
         }
     }//GEN-LAST:event_loginButtonActionPerformed
     
@@ -118,7 +119,18 @@ public class LoginPage extends javax.swing.JFrame {
         return false;
     }
     
-    private boolean emailExist(String email){
+    private boolean emailExist(String inputEmail){
+        
+        
+        for(int i = 0; i < Main.MAX_ACCOUNTS; i++){
+            
+            if(Main.account[i].getUsername().isEmpty()){
+                break;
+            }
+            if(inputEmail.equals(Main.account[i].getEmail())){
+                return true;
+            }
+         }
         
         return false;
         

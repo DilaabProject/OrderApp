@@ -33,10 +33,10 @@ public class FileRW {
                 Main.account[count].setRole(accounts[3]);
                 
                 count++;
-               
+               System.out.print(Main.account[count].getEmail());
             }
             
-            
+            scan.close();
         } catch (IOException e){
             
         } 
