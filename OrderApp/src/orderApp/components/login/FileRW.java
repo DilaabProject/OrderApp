@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package orderApp.components.login;
-
 /**
  *
  * @author zero
@@ -12,7 +11,6 @@ package orderApp.components.login;
 
 import java.io.*;
 import java.util.*;
-import orderApp.Main;
 public class FileRW {
     
     
