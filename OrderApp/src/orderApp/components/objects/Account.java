@@ -49,4 +49,8 @@ public class Account extends Person{
         return role;
         
     }
+    
+    public String accountData(){
+        return username + "/" + email + "/" + password + "/" + role;
+    }
 }
