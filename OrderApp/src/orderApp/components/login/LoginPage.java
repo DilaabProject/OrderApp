@@ -216,21 +216,24 @@ public class LoginPage extends javax.swing.JFrame {
         
         if(usernameIsNotEmpty && !usernameIsEmail && usernameExist){
             System.out.print("successfully login using username");
+
             
             //if the user is admin, then the admin menu will popup 
             //    else the member menu.
             // Main.mainForm();
             Main.loginForm();
+
             return;
         }
       
         if (usernameIsNotEmpty && usernameIsEmail && emailPassExist(inputtedUsername, inputtedPassword)){
             emailExist = true;
             System.out.print("successfully login using email");
-            
+
              //if the user is admin, then the admin menu will popup 
             //    else the member menu.
             // Main.mainForm();
+
              Main.loginForm();
              return;
         }

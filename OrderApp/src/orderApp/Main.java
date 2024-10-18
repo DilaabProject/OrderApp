@@ -23,9 +23,10 @@ public class Main {
     
     //frames
     public static LoginPage loginPage;
-    
+
     public static MainMenu mainMenuAdmin;
     public static MainMenu mainMenuMember;
+
     
     
     
@@ -74,5 +75,6 @@ public class Main {
             mainMenuMember.setVisible(false);
         }
     }
+  
 }
 
