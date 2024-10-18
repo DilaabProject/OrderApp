@@ -58,11 +58,11 @@ public class Main {
     }
     
     public static void mainForm(){
-        if(mainMenu == null){
-            mainMenu = new MainMenu();
-            mainMenu.setVisible(true);
+        if(mainMenuAdmin == null){
+            mainMenuAdmin = new MainMenu();
+            mainMenuAdmin.setVisible(true);
         } else {
-            mainMenu.setVisible(false);
+            mainMenuAdmin.setVisible(false);
         }
     }
 }
