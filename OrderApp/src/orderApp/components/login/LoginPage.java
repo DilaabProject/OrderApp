@@ -232,6 +232,8 @@ public class LoginPage extends javax.swing.JFrame {
         
         if(usernameIsNotEmpty && !usernameIsEmail && usernameExist){
             System.out.print("successfully login using username");
+             //check first the role
+             
              Main.mainForm();
              Main.loginForm();
             return;
@@ -240,6 +242,8 @@ public class LoginPage extends javax.swing.JFrame {
         if (usernameIsNotEmpty && usernameIsEmail && emailPassExist(inputtedUsername, inputtedPassword)){
             emailExist = true;
             System.out.print("successfully login using email");
+            
+            //check first the role
              Main.mainForm();
              Main.loginForm();
              return;

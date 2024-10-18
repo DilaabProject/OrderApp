@@ -24,7 +24,8 @@ public class Main {
     //frames
     public static LoginPage loginPage;
     
-    public static MainMenu mainMenu;
+    public static MainMenu mainMenuMember;
+    public static MainMenu mainMenuAdmin;
     
     
     
