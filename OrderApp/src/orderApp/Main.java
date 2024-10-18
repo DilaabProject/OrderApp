@@ -1,11 +1,11 @@
 package orderApp;
 
-
-
 import orderApp.components.login.LoginPage;
 import orderApp.components.login.FileRW;
 import orderApp.components.objects.Account;
 import orderApp.components.mainMenu.MainMenu;
+
+
 public class Main {
 
     //constants
@@ -24,7 +24,8 @@ public class Main {
     //frames
     public static LoginPage loginPage;
     
-    public static MainMenu mainMenu;
+    public static MainMenu mainMenuAdmin;
+    public static MainMenu mainMenuMember;
     
     
     
@@ -56,12 +57,21 @@ public class Main {
         }
     }
     
-    public static void mainForm(){
-        if(mainMenu == null){
-            mainMenu = new MainMenu();
-            mainMenu.setVisible(true);
+    public static void mainAdminForm(){
+        if(mainMenuAdmin == null){
+            mainMenuAdmin = new MainMenu();
+            mainMenuAdmin.setVisible(true);
         } else {
-            mainMenu.setVisible(false);
+            mainMenuAdmin.setVisible(false);
+        }
+    }
+    
+    public static void mainMemberForm(){
+        if(mainMenuMember == null){
+            mainMenuMember = new MainMenu();
+            mainMenuMember.setVisible(true);
+        } else {
+            mainMenuMember.setVisible(false);
         }
     }
 }

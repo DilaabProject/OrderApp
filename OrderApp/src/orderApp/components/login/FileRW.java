@@ -3,6 +3,8 @@ package orderApp.components.login;
 import java.io.*;
 import java.util.*;
 import orderApp.Main;
+
+
 public class FileRW {
     
     private static final String ACCOUNTS_PATH = "src/orderApp/components/login/accounts.txt";
@@ -36,7 +38,6 @@ public class FileRW {
                 
                 accounts = temp.split("/");
                 
-                System.out.print(temp);
                 Main.account[count].setUsername(accounts[0]);
                 Main.account[count].setEmail(accounts[1]);
                 Main.account[count].setPassword(accounts[2]);
