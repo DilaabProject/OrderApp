@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import orderApp.Main;
+import orderApp.components.login.FileRW;
 /**
  *
  * @author JOHN-RONAN S. BEIRA
@@ -46,10 +47,8 @@ public class LoginPage extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
         signUpButton = new javax.swing.JButton();
 
-        signUpForm.setMaximumSize(new java.awt.Dimension(330, 220));
         signUpForm.setMinimumSize(new java.awt.Dimension(330, 220));
         signUpForm.setModal(true);
-        signUpForm.setPreferredSize(new java.awt.Dimension(330, 220));
         signUpForm.setResizable(false);
         signUpForm.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -104,9 +103,9 @@ public class LoginPage extends javax.swing.JFrame {
 
         loginButton.setText("Login");
         loginButton.setFocusable(false);
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
+        loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginButtonMouseClicked(evt);
             }
         });
         jPanel1.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 80, -1));
@@ -125,9 +124,88 @@ public class LoginPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+
+    private void signUpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpButtonMouseClicked
+        signUpForm.setVisible(true);
+    }//GEN-LAST:event_signUpButtonMouseClicked
+
+    private void signUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpMouseClicked
         
-        JLabel outputMessageTags;
+        boolean isUsernameUnique = false;
+        boolean isEmailUnique = false;
+        boolean isEmailValid = false;
+        String username = usernameSignUpText.getText();
+        String email = emailSignUpText.getText();
+        String password;
+        
+        
+        char passwordArray[] = passwordSignUpText.getPassword();
+        password = new String(passwordArray);  
+        
+        isUsernameUnique = usernameExist(username);
+        isEmailValid = validEmailVerification(email);
+        isEmailUnique = emailExist(email);
+        
+        //check if the fields is not empty
+        
+        if(!isUsernameUnique && !isEmailUnique && !isEmailValid){
+            
+            System.out.print("Email and Username is Invalid \n");
+        }
+        
+        if(!isEmailValid){
+            System.out.print("Email is not valid \n");
+        }
+        if(isUsernameUnique && !isEmailUnique && !isEmailValid){
+            
+            System.out.print("Username is Taken \n");
+        }
+        
+        if(!isEmailUnique && isEmailValid){
+            
+            System.out.print("Email is already in use \n");
+        }
+       
+        
+        if (isUsernameUnique && isEmailUnique && isEmailValid){
+            
+            for(int i = 0; i < Main.MAX_ACCOUNTS; i++){
+                
+                if(Main.END_LINE.equals(Main.account[i].getUsername())){
+                    Main.account[i].setUsername(username);
+                    Main.account[i].setEmail(email);
+                    Main.account[i].setPassword(password);
+                    Main.account[i].setRole("member"); // permissions- need to revise this.
+                    Main.account[i + 1].setUsername(Main.END_LINE);
+                    FileRW.fileWrite();
+                    break;
+                }
+                
+                
+            }
+            
+            signUpForm.setVisible(false);
+           
+        }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_signUpMouseClicked
+
+    private void usernameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
+        // TODO add your handling code here:
+        passwordText.requestFocus();
+    }//GEN-LAST:event_usernameTextActionPerformed
+
+    private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextActionPerformed
+        // TODO add your handling code here:
+        loginButton.doClick();
+    }//GEN-LAST:event_passwordTextActionPerformed
+
+    private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
+            JLabel outputMessageTags;
         String inputtedUsername = usernameText.getText().trim();
         String inputtedPassword;
        
@@ -154,84 +232,24 @@ public class LoginPage extends javax.swing.JFrame {
         
         if(usernameIsNotEmpty && !usernameIsEmail && usernameExist){
             System.out.print("successfully login using username");
+             Main.mainForm();
+             Main.loginForm();
             return;
         }
       
         if (usernameIsNotEmpty && usernameIsEmail && emailPassExist(inputtedUsername, inputtedPassword)){
             emailExist = true;
             System.out.print("successfully login using email");
+             Main.mainForm();
+             Main.loginForm();
+             return;
         }
         
        
         if (usernameIsNotEmpty && !usernameIsEmail && !usernameExist){
             JOptionPane.showMessageDialog(this, "You have inputted an invalid Email Address or Username. Try again.", "Invalid Email or Username", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_loginButtonActionPerformed
-
-
-    private void signUpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpButtonMouseClicked
-        signUpForm.setVisible(true);
-    }//GEN-LAST:event_signUpButtonMouseClicked
-
-    private void signUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpMouseClicked
-        
-        boolean isUsernameUnique = false;
-        boolean isEmailUnique = false;
-        boolean isEmailValid = false;
-        String username = usernameSignUpText.getText();
-        String email = emailSignUpText.getText();
-        String password;
-        
-        
-        char passwordArray[] = passwordSignUpText.getPassword();
-        password = new String(passwordArray);  
-        
-        isUsernameUnique = usernameExist(username);
-        isEmailValid = validEmailVerification(email);
-        
-        //check if the fields is not empty
-        
-        if(!isUsernameUnique && !isEmailUnique && !isEmailValid){
-            
-            System.out.print("Email and Username is Invalid \n");
-        }
-        
-        if(!isEmailValid){
-            System.out.print("Email is not valid \n");
-        }
-        if(isUsernameUnique && !isEmailUnique && !isEmailValid){
-            
-            System.out.print("Username is Taken \n");
-        }
-        
-        if(isUsernameUnique && !isEmailUnique && isEmailValid){
-            
-            System.out.print("Email is already in use \n");
-        }
-       
-        
-        if (isUsernameUnique && isEmailUnique && isEmailValid){
-            
-            //register to the accounts array
-            
-            signUpForm.setVisible(false);
-        }
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_signUpMouseClicked
-
-    private void usernameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
-        // TODO add your handling code here:
-        passwordText.requestFocus();
-    }//GEN-LAST:event_usernameTextActionPerformed
-
-    private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextActionPerformed
-        // TODO add your handling code here:
-        loginButton.doClick();
-    }//GEN-LAST:event_passwordTextActionPerformed
+    }//GEN-LAST:event_loginButtonMouseClicked
 
     
     private boolean validEmailVerification(String inputEmail){
@@ -286,11 +304,11 @@ public class LoginPage extends javax.swing.JFrame {
                 break;
             }
             if(inputUsername.equals(Main.account[i].getUsername())){
-                return true;
+                return false;
             }
          }
         
-        return false;
+        return true;
     }
     
       private boolean emailExist(String inputEmail){
@@ -303,11 +321,11 @@ public class LoginPage extends javax.swing.JFrame {
                 break;
             }
             if(inputEmail.equals(Main.account[i].getEmail())){
-                return true;
+                return false;
             }
          }
         
-        return false;
+        return true;
         
     }
     

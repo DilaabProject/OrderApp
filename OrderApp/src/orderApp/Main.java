@@ -5,6 +5,7 @@ package orderApp;
 import orderApp.components.login.LoginPage;
 import orderApp.components.login.FileRW;
 import orderApp.components.objects.Account;
+import orderApp.components.mainMenu.MainMenu;
 public class Main {
 
     //constants
@@ -23,6 +24,7 @@ public class Main {
     //frames
     public static LoginPage loginPage;
     
+    public static MainMenu mainMenu;
     
     
     
@@ -49,7 +51,18 @@ public class Main {
         if(loginPage == null){
             loginPage = new LoginPage();
             loginPage.setVisible(true); 
-        } 
+        } else {
+            loginPage.setVisible(false);
+        }
+    }
+    
+    public static void mainForm(){
+        if(mainMenu == null){
+            mainMenu = new MainMenu();
+            mainMenu.setVisible(true);
+        } else {
+            mainMenu.setVisible(false);
+        }
     }
 }
 
