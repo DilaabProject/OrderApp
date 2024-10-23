@@ -3,8 +3,9 @@ package orderApp;
 import orderApp.components.login.LoginPage;
 import orderApp.components.login.FileRW;
 import orderApp.components.objects.Account;
-import orderApp.components.mainMenu.MainMenu;
-
+import orderApp.components.mainMenu.MainMenuAdmin;
+import orderApp.components.mainMenu.MainMenuMember;
+import orderApp.components.inventory.Inventory;
 
 public class Main {
 
@@ -13,8 +14,8 @@ public class Main {
     public static final int ACCOUNT_COUNT_FORMAT = 4; // username/email/password/role
     
     public static final String END_LINE = "[END]";
-    
-    
+    public static final String SuperAdminRole = "admin";
+    public static final String MemberRole = "member";
     
     //object arrays
     public static Account account[] = new Account[MAX_ACCOUNTS];
@@ -24,10 +25,10 @@ public class Main {
     //frames
     public static LoginPage loginPage;
 
-    public static MainMenu mainMenuAdmin;
-    public static MainMenu mainMenuMember;
+    public static MainMenuAdmin mainMenuAdmin;
+    public static MainMenuMember mainMenuMember;
 
-    
+    public static Inventory inventory;
     
     
     
@@ -60,7 +61,7 @@ public class Main {
     
     public static void mainAdminForm(){
         if(mainMenuAdmin == null){
-            mainMenuAdmin = new MainMenu();
+            mainMenuAdmin = new MainMenuAdmin();
             mainMenuAdmin.setVisible(true);
         } else {
             mainMenuAdmin.setVisible(false);
@@ -69,12 +70,21 @@ public class Main {
     
     public static void mainMemberForm(){
         if(mainMenuMember == null){
-            mainMenuMember = new MainMenu();
+            mainMenuMember = new MainMenuMember();
             mainMenuMember.setVisible(true);
         } else {
             mainMenuMember.setVisible(false);
         }
     }
   
+    public static void inventoryForm(){
+        if(inventory == null){
+            inventory = new Inventory();
+            inventory.setVisible(true);
+        } else {
+            inventory.setVisible(false);
+        }
+    }
+    
 }
 

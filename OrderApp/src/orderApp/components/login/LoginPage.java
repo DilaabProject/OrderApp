@@ -191,9 +191,8 @@ public class LoginPage extends javax.swing.JFrame {
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
             JLabel outputMessageTags;
         String inputtedUsername = usernameText.getText().trim();
-        String inputtedPassword;
-       
-
+        String inputtedPassword = null;
+        String role = null;
         boolean usernameIsNotEmpty = false;
         boolean usernameIsEmail = validEmailVerification(inputtedUsername);
         boolean usernameExist = false;
@@ -202,6 +201,14 @@ public class LoginPage extends javax.swing.JFrame {
         //get the password
         char passwordArray[] = passwordText.getPassword();
         inputtedPassword = new String(passwordArray);   
+        
+        // get the role
+        
+        if(inputtedUsername != null && inputtedPassword != null){
+            
+            role = getRole(inputtedUsername, inputtedPassword);
+        }
+        
         
         //validate username inpute: username or email
         if (usernameText.getText().equals("")){
@@ -214,13 +221,19 @@ public class LoginPage extends javax.swing.JFrame {
            
         }
         
-        if(usernameIsNotEmpty && !usernameIsEmail && usernameExist){
+        if(usernameIsNotEmpty && !usernameIsEmail && usernameExist && role != null){
             System.out.print("successfully login using username");
 
             
             //if the user is admin, then the admin menu will popup 
             //    else the member menu.
-            // Main.mainForm();
+  
+            if(role.equals(Main.SuperAdminRole)){
+                Main.mainAdminForm();
+            } else {
+                Main.mainMemberForm();
+            }
+            
             Main.loginForm();
 
             return;
@@ -232,10 +245,15 @@ public class LoginPage extends javax.swing.JFrame {
 
              //if the user is admin, then the admin menu will popup 
             //    else the member menu.
-            // Main.mainForm();
-
-             Main.loginForm();
-             return;
+           
+             if(role.equals(Main.SuperAdminRole)){
+                Main.mainAdminForm();
+            } else {
+                Main.mainMemberForm();
+            }
+             
+            Main.loginForm();
+            return;
         }
         
        
@@ -321,6 +339,17 @@ public class LoginPage extends javax.swing.JFrame {
         return true;
         
     }
+      
+     public String getRole(String username, String password){
+         
+         for( int i = 0; i < Main.MAX_ACCOUNTS; i++){
+             if(username.equals(Main.account[i].getUsername()) && password.equals(Main.account[i].getPassword())){
+                 return Main.account[i].getRole();
+             }
+             
+         }
+         return null;     
+     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField emailSignUpText;
