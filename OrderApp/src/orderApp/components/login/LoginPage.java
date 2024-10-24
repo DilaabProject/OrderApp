@@ -92,6 +92,11 @@ public class LoginPage extends javax.swing.JFrame {
                 loginButtonMouseClicked(evt);
             }
         });
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 80, -1));
 
         signUpButton.setText("Sign Up");
@@ -185,7 +190,7 @@ public class LoginPage extends javax.swing.JFrame {
 
     private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextActionPerformed
         // TODO add your handling code here:
-        loginButton.doClick();
+        loginButtonMouseClicked(null);
     }//GEN-LAST:event_passwordTextActionPerformed
 
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
@@ -261,6 +266,10 @@ public class LoginPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "You have inputted an invalid Email Address or Username. Try again.", "Invalid Email or Username", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_loginButtonMouseClicked
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     
     private boolean validEmailVerification(String inputEmail){
