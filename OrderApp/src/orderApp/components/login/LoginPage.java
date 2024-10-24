@@ -2,6 +2,7 @@ package orderApp.components.login;
 
 import java.util.regex.*;
 import javax.swing.*;
+import java.awt.event.*;
 import orderApp.Main;
 import orderApp.components.login.FileRW;
 
@@ -9,6 +10,7 @@ public class LoginPage extends javax.swing.JFrame {
 
     public LoginPage() {
         initComponents();
+        initComponentsCustomActions();
     }
 
     @SuppressWarnings("unchecked")
@@ -100,6 +102,11 @@ public class LoginPage extends javax.swing.JFrame {
                 signUpButtonMouseClicked(evt);
             }
         });
+        signUpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signUpButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(signUpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 180));
@@ -108,11 +115,24 @@ public class LoginPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-
+    private void initComponentsCustomActions(){
+        usernameText.addActionListener(new java.awt.event.ActionListener(){
+        @Override
+        public void actionPerformed(java.awt.event.ActionEvent evt){
+            emailSignUpText.requestFocus();
+            System.out.print("Enter is pressed");
+}
+    });
+    }
+    
     private void signUpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpButtonMouseClicked
+        signUpForm.setLocationRelativeTo(this);
+        signUpForm.toFront();
+        signUpForm.requestFocus();
         signUpForm.setVisible(true);
     }//GEN-LAST:event_signUpButtonMouseClicked
 
+            
     private void signUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpMouseClicked
         
         boolean isUsernameUnique = false;
@@ -189,7 +209,7 @@ public class LoginPage extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordTextActionPerformed
 
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
-            JLabel outputMessageTags;
+        JLabel outputMessageTags;
         String inputtedUsername = usernameText.getText().trim();
         String inputtedPassword;
        
@@ -243,6 +263,10 @@ public class LoginPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "You have inputted an invalid Email Address or Username. Try again.", "Invalid Email or Username", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_loginButtonMouseClicked
+
+    private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_signUpButtonActionPerformed
 
     
     private boolean validEmailVerification(String inputEmail){
