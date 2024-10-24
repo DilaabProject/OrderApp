@@ -206,7 +206,7 @@ public class LoginPage extends javax.swing.JFrame {
         
         if(inputtedUsername != null && inputtedPassword != null){
             
-            role = getRole(inputtedUsername, inputtedPassword);
+            role = getRole(inputtedUsername, inputtedUsername, inputtedPassword);
         }
         
         
@@ -340,10 +340,10 @@ public class LoginPage extends javax.swing.JFrame {
         
     }
       
-     public String getRole(String username, String password){
+     public String getRole(String username, String email, String password){
          
          for( int i = 0; i < Main.MAX_ACCOUNTS; i++){
-             if(username.equals(Main.account[i].getUsername()) && password.equals(Main.account[i].getPassword())){
+             if((username.equals(Main.account[i].getUsername()) || email.equals(Main.account[i].getEmail()))  && password.equals(Main.account[i].getPassword())){
                  return Main.account[i].getRole();
              }
              
