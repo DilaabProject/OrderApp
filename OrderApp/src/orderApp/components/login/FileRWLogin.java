@@ -5,17 +5,13 @@ import java.util.*;
 import orderApp.Main;
 
 
-public class FileRW {
+public class FileRWLogin {
     
     private static final String ACCOUNTS_PATH = "src/orderApp/components/login/accounts.txt";
        
     
     public static void fileRead(){
-        
- 
-        
-        
-        
+
         try{
             
             File inputFile = new File(ACCOUNTS_PATH);
