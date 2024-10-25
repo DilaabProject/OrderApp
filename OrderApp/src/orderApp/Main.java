@@ -5,7 +5,7 @@ import orderApp.components.login.FileRWLogin;
 import orderApp.components.objects.Account;
 import orderApp.components.mainMenu.MainMenuAdmin;
 import orderApp.components.mainMenu.MainMenuMember;
-import orderApp.components.mainMenu.mainMenuComponents.inventory.Inventory;
+import orderApp.components.mainMenu.mainMenuComponents.Inventory;
 import orderApp.components.objects.Product;
 import orderApp.components.mainMenu.mainMenuComponents.AddProduct;
 import orderApp.data.FileRWproduct;

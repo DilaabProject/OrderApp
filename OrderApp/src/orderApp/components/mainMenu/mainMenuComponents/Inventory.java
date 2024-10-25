@@ -1,5 +1,5 @@
 
-package orderApp.components.mainMenu.mainMenuComponents.inventory;
+package orderApp.components.mainMenu.mainMenuComponents;
 
 import javax.swing.table.DefaultTableModel;
 import orderApp.Main;
