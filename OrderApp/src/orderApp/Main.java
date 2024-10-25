@@ -58,10 +58,8 @@ public class Main {
         FileRWLogin.fileRead();
         FileRWproduct.fileRead();
         
-       // loginForm(); 
+        loginForm(); 
 
-       //try
-       inventoryForm();
        
     }
     
