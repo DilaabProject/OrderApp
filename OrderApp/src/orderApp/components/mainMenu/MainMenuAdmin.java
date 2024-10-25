@@ -3,10 +3,6 @@ package orderApp.components.mainMenu;
 
 import orderApp.Main;
 
-
-
-
-
 public class MainMenuAdmin extends javax.swing.JFrame {
 
     
@@ -51,6 +47,11 @@ public class MainMenuAdmin extends javax.swing.JFrame {
         jPanel1.add(inventoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 130, -1));
 
         addButton.setText("Add Product");
+        addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addButtonMouseClicked(evt);
+            }
+        });
         jPanel1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 130, -1));
 
         deleteButton.setText("Delete Product");
@@ -71,6 +72,10 @@ public class MainMenuAdmin extends javax.swing.JFrame {
     private void inventoryButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventoryButtonMouseClicked
         Main.inventoryForm();
     }//GEN-LAST:event_inventoryButtonMouseClicked
+
+    private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
+        Main.addProductForm();
+    }//GEN-LAST:event_addButtonMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;

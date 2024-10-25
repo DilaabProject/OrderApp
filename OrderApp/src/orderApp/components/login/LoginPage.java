@@ -4,7 +4,7 @@ import java.util.regex.*;
 import javax.swing.*;
 import java.awt.event.*;
 import orderApp.Main;
-import orderApp.components.login.FileRW;
+import orderApp.components.login.FileRWLogin;
 
 public class LoginPage extends javax.swing.JFrame {
 
@@ -186,7 +186,7 @@ public class LoginPage extends javax.swing.JFrame {
                     Main.account[i].setPassword(password);
                     Main.account[i].setRole("member"); // permissions- need to revise this.
                     Main.account[i + 1].setUsername(Main.END_LINE);
-                    FileRW.fileWrite();
+                    FileRWLogin.fileWrite();
                     break;
                 }
                 

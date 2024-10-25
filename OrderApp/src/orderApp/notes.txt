@@ -1,0 +1,6 @@
+the product name should be greater than 4 letters
+the product quantity should be greater than 0
+
+task:
+addProduct.java: notify when product name is lesser than 4 letters
+inventory.java: make a filter algorithm
